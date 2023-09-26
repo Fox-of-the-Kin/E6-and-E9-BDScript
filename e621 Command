@@ -1,0 +1,217 @@
+$nomention
+
+$botTyping
+
+$if[$isNSFW[$channelID]==false]
+$title[No Horny!]
+$description[This Channel is NOT a NSFW Age ristricted channel!
+(This MUST be enabled to use this command as it is an adult 18+ command!)]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
+
+$c[You can get an api key by logging into e621 or e926 and going to your settings]
+$httpGetHeader[!!!APIKEY GOES HERE!!!]
+
+$cooldown[6s;Nu <@$authorID>! Please wait %time%, then use this command again!]
+
+$if[$argCount[$message]==1]
+
+$httpGet[https://e621.net/posts.json?tags=$message[1]+order:random&limit+-webm=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$var[Rawr];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$elseif[$argCount[$message]==2]
+
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+order:random&limit+-webm=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$var[Rawr];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$elseif[$argCount[$message]==3]
+
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+order:random&limit+-webm=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$var[Rawr];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$elseif[$argCount[$message]==4]
+
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]order:random&limit+-webm=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$var[Rawr];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$elseif[$argCount[$message]==5]
+
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+$message[5]+order:random&limit+-webm=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$var[Rawr];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$elseif[$argCount[$message]==0]
+
+$httpGet[https://e621.net/posts.json?tags=-webm&limit=$random[1;20]]
+
+$jsonParse[$httpResult]
+
+$title[e621 Search (Currently Testing!)]
+$description[
+$var[Rawr;$random[0;19]]
+
+$if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
+$if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+(Note: Same post may appear after doing command, this is an e621 issue from what i can tell
+(and this command is still WiP so it might a bit buggy!)
+
+Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204]Request Called but No image!$elseif[$httpStatus==301]301 -> Moved permanently$elseif[$httpStatus==302]302 -> Found$elseif[$httpStatus==400]400 -> Bad Request$elseif[$httpStatus==403]403 -> Forbidden$elseif[$httpStatus==404]404 -> Not Found$elseif[$httpStatus==500]500 -> Internal/Server Error$elseif[$httpStatus==429]429 -> Too Many Request$elseUnknown http code ($httpStatus)$endif
+]
+$image[$json[posts;$random[0;19];file;url]]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$jsonClear
+
+$else
+
+$title[Too many arguments!]
+$description[You may only use up to 5 tags!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$endif
