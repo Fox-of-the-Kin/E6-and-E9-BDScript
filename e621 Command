@@ -14,8 +14,8 @@ $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $else
 
-$c[You can get an api key by logging into e621 or e926 and going to your settings]
-$httpGetHeader[!!!APIKEY GOES HERE!!!]
+$c[Get API key from e621 or e926]
+$httpGetHeader[API KEY GOES HERE]
 
 $cooldown[6s;Nu <@$authorID>! Please wait %time%, then use this command again!]
 
@@ -25,6 +25,18 @@ $httpGet[https://e621.net/posts.json?tags=$message[1]+order:random&limit+-webm=$
 
 $jsonParse[$httpResult]
 
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[Invalid Tags or API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
+
 $title[e621 Search (Currently Testing!)]
 $description[
 
@@ -34,7 +46,9 @@ $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
-$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+Tags: `$message[1]`
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -49,6 +63,8 @@ $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
+
+$endif
 
 $elseif[$argCount[$message]==2]
 
@@ -56,6 +72,18 @@ $httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+order:random&l
 
 $jsonParse[$httpResult]
 
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[Invalid Tags or API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
+
 $title[e621 Search (Currently Testing!)]
 $description[
 
@@ -65,7 +93,9 @@ $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
-$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+Tags: `$message[1]` , `$message[2]`
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -80,6 +110,8 @@ $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
+
+$endif
 
 $elseif[$argCount[$message]==3]
 
@@ -87,6 +119,18 @@ $httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+or
 
 $jsonParse[$httpResult]
 
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[Invalid Tags or API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
+
 $title[e621 Search (Currently Testing!)]
 $description[
 
@@ -96,7 +140,9 @@ $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
-$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+Tags: `$message[1]` , `$message[2]` , `$message[3]` 
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -111,12 +157,26 @@ $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
+
+$endif
 
 $elseif[$argCount[$message]==4]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+order:random&limit+-webm=$random[1;20]]
 
 $jsonParse[$httpResult]
+
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[Invalid Tags or API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
 
 $title[e621 Search (Currently Testing!)]
 $description[
@@ -128,6 +188,8 @@ $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
 $if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+Tags: `$message[1]` , `$message[2]` , `$message[3]` , `$message[4]`
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -142,6 +204,8 @@ $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
+
+$endif
 
 $elseif[$argCount[$message]==5]
 
@@ -149,6 +213,18 @@ $httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$m
 
 $jsonParse[$httpResult]
 
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[Invalid Tags or API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
+
 $title[e621 Search (Currently Testing!)]
 $description[
 
@@ -158,7 +234,9 @@ $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
-$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+
+Tags: `$message[1]` , `$message[2]` , `$message[3]` , `$message[4]` , `$message[5]`
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -174,11 +252,25 @@ $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
 
+$endif
+
 $elseif[$argCount[$message]==0]
 
 $httpGet[https://e621.net/posts.json?tags=-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
+
+$if[$json[posts]==[\]]
+
+$title[No posts found!]
+$description[API Rate Limited!]
+$thumbnail[$userServerAvatar[$botID]]
+$color[#8c12c9]
+$authorIcon[$authorAvatar]
+$author[$username[$authorID] excuted this command!]
+$footer[Command E6 was Excuted! Bot Created by @foxofthekin]
+
+$else
 
 $title[e621 Search (Currently Testing!)]
 $description[
@@ -188,7 +280,7 @@ $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
 $if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
-$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
+$if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
 
 (Note: Same post may appear after doing command, this is an e621 issue from what i can tell
 (and this command is still WiP so it might a bit buggy!)
@@ -203,6 +295,8 @@ $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $jsonClear
+
+$endif 
 
 $else
 
