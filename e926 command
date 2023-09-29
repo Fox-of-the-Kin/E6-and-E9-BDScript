@@ -2,14 +2,14 @@ $nomention
 
 $botTyping
 
-$c[Get your api key from e621 or e926]
-$httpGetHeader[API KEY GOES HERE]
+$c[Get API Key from e621 or e926]
+$httpGetHeader[Key goes here]
 
 $cooldown[6s;Nu <@$authorID>! Please wait %time%, then use this command again!]
 
 $if[$argCount[$message]==1]
 
-$httpGet[https://e926.net/posts.json?tags=$message[1]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=$message[1]+order:random+-webm+status:active+-flash&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -18,7 +18,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -56,7 +56,7 @@ $endif
 
 $elseif[$argCount[$message]==2]
 
-$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+order:random+-webm+status:active+-flash&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -65,7 +65,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -79,7 +79,7 @@ $var[Rawr;$random[0;19]]
 
 $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
 $if[$json[posts;$var[Rawr];rating]==s]Rating: SFW$elseif[$json[posts;0;rating]==q]Rating: Questionable$elseRating: NSFW$endif
-$if[$json[posts;$var[Rawr];sources;0]==]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
+$if[$json[posts;$var[Rawr];sources;0]==]No Source!$elseif[$json[posts;$var[Rawr];sources;0]==[\]]No Source!$else[Post Source\]($json[posts;0;sources;0])$endif
 
 $if[$json[posts;$var[Rawr];file;url]==]Blacklisted by the API or Deleted image was called (Or Rate limited or API having a stroke)$else[Direct Link\]($json[posts;$var[Rawr];file;url])$endif
 
@@ -103,7 +103,7 @@ $endif
 
 $elseif[$argCount[$message]==3]
 
-$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+order:random+status:active+-webm+-flash&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -112,7 +112,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -139,7 +139,7 @@ Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204
 ]
 $image[$json[posts;$var[Rawr];file;url]]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[PurpleHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -150,7 +150,7 @@ $endif
 
 $elseif[$argCount[$message]==4]
 
-$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+order:random+-webm+status:active+-flash&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -159,7 +159,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -197,7 +197,7 @@ $endif
 
 $elseif[$argCount[$message]==5]
 
-$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+$message[5]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+$message[5]+order:random+status:active+-webm+-flash&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -206,7 +206,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -233,7 +233,7 @@ Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204
 ]
 $image[$json[posts;$var[Rawr];file;url]]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[PurpleHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -244,7 +244,7 @@ $endif
 
 $elseif[$argCount[$message]==0]
 
-$httpGet[https://e926.net/posts.json?tags=-webm&limit=$random[1;20]]
+$httpGet[https://e926.net/posts.json?tags=order:random+-webm+-flash+status:active&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -253,7 +253,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
@@ -262,6 +262,7 @@ $else
 
 $title[e926 Search (Currently Testing!)]
 $description[
+
 $var[Rawr;$random[0;19]]
 
 $if[$json[posts;$var[Rawr];tags;artist;0]==]Artist Name Unknown!$elseArtist Name: $json[posts;0;tags;artist;0]$endif
@@ -291,7 +292,7 @@ $else
 $title[Too many arguments!]
 $description[You may only use up to 5 tags!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E9 was Excuted! Bot Created by @foxofthekin]
