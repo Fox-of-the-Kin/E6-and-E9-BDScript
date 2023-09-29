@@ -3,25 +3,26 @@ $nomention
 $botTyping
 
 $if[$isNSFW[$channelID]==false]
+
 $title[No Horny!]
 $description[This Channel is NOT a NSFW Age ristricted channel!
 (This MUST be enabled to use this command as it is an adult 18+ command!)]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
 
 $else
 
-$c[Get API key from e621 or e926]
-$httpGetHeader[API KEY GOES HERE]
+$c[Get API key from e621 or e926 website]
+$httpGetHeader[Key goes here!]
 
 $cooldown[6s;Nu <@$authorID>! Please wait %time%, then use this command again!]
 
 $if[$argCount[$message]==1]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+order:random+-flash+status:active+-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -30,7 +31,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -57,7 +58,7 @@ Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204
 ]
 $image[$json[posts;$var[Rawr];file;url]]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[PurpleHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -68,7 +69,7 @@ $endif
 
 $elseif[$argCount[$message]==2]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+order:random+-flash+status:active+-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -77,7 +78,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -115,7 +116,7 @@ $endif
 
 $elseif[$argCount[$message]==3]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+order:random+-flash+status:active+-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -124,7 +125,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -162,7 +163,7 @@ $endif
 
 $elseif[$argCount[$message]==4]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+order:random+-flash+status:active+-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -171,7 +172,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -209,7 +210,7 @@ $endif
 
 $elseif[$argCount[$message]==5]
 
-$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+$message[5]+order:random&limit+-webm=$random[1;20]]
+$httpGet[https://e621.net/posts.json?tags=$message[1]+$message[2]+$message[3]+$message[4]+$message[5]+order:random+-flash+status:active+-webm&limit=$random[1;20]]
 
 $jsonParse[$httpResult]
 
@@ -218,7 +219,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[Invalid Tags or API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -245,7 +246,7 @@ Http Status: $if[$httpStatus==200]200 -> Request Called!$elseif[$httpStatus==204
 ]
 $image[$json[posts;$var[Rawr];file;url]]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[PurpleHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -265,7 +266,7 @@ $if[$json[posts]==[\]]
 $title[No posts found!]
 $description[API Rate Limited!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
@@ -303,7 +304,7 @@ $else
 $title[Too many arguments!]
 $description[You may only use up to 5 tags!]
 $thumbnail[$userServerAvatar[$botID]]
-$color[#8c12c9]
+$color[$getVar[ErrorHex]]
 $authorIcon[$authorAvatar]
 $author[$username[$authorID] excuted this command!]
 $footer[Command E6 was Excuted! Bot Created by @foxofthekin]
