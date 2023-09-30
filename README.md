@@ -10,4 +10,10 @@ You must add my name on the command as i do not like people not credit orignal s
 
 if you plan on using and modifying the code you must add `Code Made by @foxofthekin, Modifyed by (Your name here)` on the footer or anywhere on the command!
 
+# Slash command information!
+
+Slash commands ARE supported but need to be named `tag1` , `tag2` , `tag3` , `tag4` , `tag5`
+
+Don't make any of them a requirement as not having a tag works fine (tho the image that gets fetched is ENTIRELY random)
+
 
